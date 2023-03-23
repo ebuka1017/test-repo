@@ -1,0 +1,170 @@
+<!doctype html> 
+<html> 
+  <head>
+      {% if title %}
+      <title>{{ title }}</title>
+      {% else %}
+      <title>welcome</title>
+      {% endif %}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+      <meta name="apple-mobile-web-app-capable" content="yes"> 
+      <style> 
+         .glass-card { 
+         background-color: rgba(255, 255, 255, 0.2);
+          border-radius: 10px; 
+          padding: 20px; 
+          backdrop-filter: blur(10px);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+          max-width: 300px; 
+          margin: auto; 
+          margin-top: 50px; 
+          height: 400px;
+          }
+           
+         body { background-image: url('{{ url_for('static', filename='img/landing.jpg') }}');
+       
+        background-repeat:no repeat;
+        background-size:cover; 
+        font-family: 'Circular Std', sans-serif; 
+        height: 100vh; 
+        }
+        
+     div {
+      margin: 0 auto; 
+      } 
+      
+      .button { 
+      text-align: center; 
+      display: inline block;
+      background-color: transparent;
+      border: 2px solid black;
+      border-radius: 20px; 
+      color: black;
+      font-family: Circular Std, sans-serif; 
+      letter-spacing:2px; 
+      text-decoration: none; 
+      font-size: 20px; 
+      padding: 10px 20px;
+      transition: all 1.0s ease;
+      display:block; 
+      margin: auto; 
+      position: fixed; 
+      top: 80%; 
+      left:13%;
+      width: 60%;
+      } 
+      
+    .button:hover, .button:focus { 
+    background-color:#00000053 
+    outline: none; 
+    box-shadow: none; 
+    filter: blur(0px); 
+    } 
+    
+    .button:active { 
+    background-color: rgba(255, 255, 255, 0.5); 
+    filter: blur(0px); 
+    transform: scale(1.1); 
+    } 
+    
+    .intro-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+    .intro-text p {
+  text-align: center;
+  font-family: "Circular Std", sans-serif;
+  color: black;
+  font-size: 55px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin: 0 auto;
+  max-width: 800px;
+  border-radius: 20px;
+  padding: 20px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+  
+  .intro-text span {
+  font-family: "Circular Std", sans-serif;
+  color: black;
+  font-size: 55px;
+  font-weight: bold;
+}
+
+   #cursor {
+     animation: blink 1s infinite;
+     }
+     
+   @keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+    
+   @media screen and (min-width: 720px) { 
+     .intro-text p {
+        font-size: 120px;
+     }
+     
+     .intro-text span {
+        font-size: 120px;
+     }
+     
+     .glass-card {
+      height: 800px; 
+      max-width: 800px;
+      border-radius: 20px;
+      } 
+      p { 
+      font-size: 120px;
+       } 
+     .button{
+        width: 30%;
+        left: 31%;
+     }
+     } 
+     </style> 
+     </head> 
+       <body> 
+          <div class="glass-card"> 
+             <div class="intro-text">
+                 <p><span id="typed-text"></span><span id="cursor">|</span></p> 
+                 <a href="home.html" class="button">CONTINUE</a> 
+                 </div> 
+                </div>      
+            
+<script>
+  const text = "Welcome to my Portfolio...";
+  let index = 0;
+  function typeEffect() {
+    const typedText = text.slice(0, ++index);
+ document.querySelector('span').textContent = typedText + '' ;
+    if (index < text.length) {
+      setTimeout(typeEffect, 250);
+    } else {
+      blinkEffect();
+    }
+  }
+  function blinkEffect() {
+    setInterval(() => {   
+    const currentText = document.querySelector('span').textContent;
+    }, 500);
+  }
+  typeEffect();
+</script>
+</body>
+</html>
